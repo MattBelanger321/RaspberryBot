@@ -49,5 +49,15 @@ async def on_message(message):
     if message.content.lower() == ("?tomato"):
         await message.channel.send('Yes, this is indeed a tomato :tomato:')
 
+    if message.content.lower() == ("?insult"):
+        ranNum = random.randint(1,3)
+        if ranNum == 1:
+            await message.channel.send("Youre a potatoe hah!")
+        elif ranNum == 2:
+            await message.channel.send("Took alot of confidence to get out of bed today")
+        elif ranNum == 3:
+            await message.channel.send("Its not even haloween why are you wearing a mask")
+
+
 file = open('config.txt')
 client.run(file.read())
