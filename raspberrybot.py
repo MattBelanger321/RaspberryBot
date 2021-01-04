@@ -1,6 +1,9 @@
 import discord
 import random
+import time
+from time import sleep
 client = discord.Client()
+insult=["Youre a potatoe hah!","Took alot of confidence to get out of bed today","Its not even haloween why are you wearing a mask"]
 
 
 @client.event
@@ -50,14 +53,37 @@ async def on_message(message):
         await message.channel.send('Yes, this is indeed a tomato :tomato:')
 
     if message.content.lower() == ("?insult"):
-        ranNum = random.randint(1,3)
-        if ranNum == 1:
-            await message.channel.send("Youre a potatoe hah!")
-        elif ranNum == 2:
-            await message.channel.send("Took alot of confidence to get out of bed today")
-        elif ranNum == 3:
-            await message.channel.send("Its not even haloween why are you wearing a mask")
+        ranNum = random.randint(0,len(insult)-1)  #If you want to add insult, refer to line 4 and add new insult to list
+        await message.channel.send(insult[ranNum])
 
-
+    if message.content.lower() == ("?timer"):
+        await message.channel.send("How long for the timer?(in minutes)")
+        msg = await client.wait_for('message')
+        timechosen = msg.content
+        time1=timechosen
+        while 1:
+            if time1.isdigit()==False:
+                await message.channel.send("Invalid Entry Please Enter Again!")
+                msg = await client.wait_for('message')
+                timechosen = msg.content
+                time1 = timechosen
+                continue
+            elif time1.isdigit()==True:
+                time1 = int(timechosen)
+                break
+        print(timechosen)
+        print(time1)
+        counter2 = int(0)
+        while counter2<time1:
+            counter=0
+            while 1:
+                counter+=1
+                time.sleep(1)
+                print(counter)
+                if counter==60:
+                    counter2=counter2+1
+                    break
+        print("Timer Done")
+        await message.channel.send('<@753250163216220172>'+" Timer has pinged you, Time to get to WORK!")
 file = open('config.txt')
 client.run(file.read())
