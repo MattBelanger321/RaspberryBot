@@ -1,5 +1,5 @@
 import discord
-
+import random
 client = discord.Client()
 
 
@@ -42,6 +42,9 @@ async def on_message(message):
 
     if message.content.upper() == ("?MATT"):
         await message.channel.send('The elder has arrived')
+
+    if message.content.lower() == ("?devin"):
+        await message.channel.send('My favourite man child arrived everyone say hi ;)')
 
 file = open('config.txt')
 client.run(file.read())
