@@ -46,5 +46,8 @@ async def on_message(message):
     if message.content.lower() == ("?devin"):
         await message.channel.send('My favourite man child arrived everyone say hi ;)')
 
+    if message.content.lower() == ("?tomato"):
+        await message.channel.send('Yes, this is indeed a tomato :tomato:')
+
 file = open('config.txt')
 client.run(file.read())
