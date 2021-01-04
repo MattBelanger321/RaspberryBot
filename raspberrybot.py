@@ -33,7 +33,8 @@ async def on_message(message):
 
     if message.content.startswith('fuck') or message.content.startswith('FUCK'):
         await message.channel.send('watch your fucking profanity you bitch')
-
+    if message.content == ('?Nick'):
+        await message.channel.send('The Asian Man has Arrived')
 
 file = open('config.txt')
 client.run(file.read())
